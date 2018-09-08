@@ -162,7 +162,10 @@ func (async *AsyncResponse) QueryRealResponse(i interface{}, timeout time.Durati
 }
 
 func (async *AsyncResponse) QueryLocation() (*http.Response, error) {
-	url := url.Parse(async.Location)
+	url, err := url.Parse(async.Location)
+	if err != nil {
+		return nil, err
+	}
 	path := url.Path
 	newURL := async.client.serverEndpoint + path
 	request, err := http.NewRequest(http.MethodGet, newURL, nil)
