@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	plugin.RegisterDriver(zstack.NewDriver("",""))
+	plugin.RegisterDriver(zstack.NewDriver("", ""))
 }

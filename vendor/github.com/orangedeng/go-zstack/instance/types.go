@@ -17,7 +17,7 @@ const (
 const (
 	InstanceDefaultTimeout = 120
 	DefaultWaitForInterval = 5
-	timeout				   = 300
+	timeout                = 300
 )
 
 type StopInstanceType string
@@ -47,8 +47,8 @@ type CreateRequest struct {
 
 type CreateOfferingRequest struct {
 	Params struct {
-		CpuNum     int 		`json:"cpuNum,omitempty"`
-		MemorySize int64    `json:"memorySize,omitempty"`
+		CpuNum     int   `json:"cpuNum,omitempty"`
+		MemorySize int64 `json:"memorySize,omitempty"`
 	}
 }
 

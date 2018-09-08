@@ -9,21 +9,21 @@ import (
 	"github.com/docker/machine/libmachine/mcnflag"
 	"github.com/docker/machine/libmachine/state"
 
+	"github.com/docker/machine/libmachine/ssh"
 	"github.com/orangedeng/go-zstack/common"
 	"github.com/orangedeng/go-zstack/infrastructure"
 	"github.com/orangedeng/go-zstack/instance"
 	"github.com/orangedeng/go-zstack/network/l3"
 	"github.com/orangedeng/go-zstack/volume"
 	"github.com/pkg/errors"
-	"github.com/docker/machine/libmachine/ssh"
 	"io/ioutil"
 	"strings"
 )
 
 const (
-	driverName = "zstack"
-	dockerPort = 2376
-	sshUser = "docker"
+	driverName  = "zstack"
+	dockerPort  = 2376
+	sshUser     = "docker"
 	sshPassword = "tcuser"
 )
 
@@ -49,14 +49,14 @@ type Driver struct {
 	Name        string
 	Description string
 
-	ZoneName    string
-	ClusterName string
+	ZoneName       string
+	ClusterName    string
 	PrimaryStorage string
 
 	ImageName        string
 	InstanceOffering string
 
-	PublicKey	[]byte
+	PublicKey []byte
 
 	L3NetworkNames string
 

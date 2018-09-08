@@ -1,8 +1,8 @@
 package instance
 
 import (
-	"github.com/orangedeng/go-zstack/common"
 	"encoding/json"
+	"github.com/orangedeng/go-zstack/common"
 	"net/http"
 )
 
@@ -14,7 +14,7 @@ type Offering struct {
 	common.Client
 }
 
-func (c *Offering)CreateOffering(req CreateOfferingRequest) (*common.AsyncResponse, error) {
+func (c *Offering) CreateOffering(req CreateOfferingRequest) (*common.AsyncResponse, error) {
 	requestBody, err := json.Marshal(req)
 	if err != nil {
 		return nil, err
