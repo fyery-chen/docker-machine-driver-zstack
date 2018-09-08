@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"time"
 
 	"github.com/Sirupsen/logrus"
@@ -57,7 +58,7 @@ type Error struct {
 	Description string            `json:"description,omitempty"`
 	Details     string            `json:"details,omitempty"`
 	Elaboration string            `json:"elaboration,omitempty"`
-	Opaque      map[string]string `json:"opaque,omitemtpy"`
+	Opaque      map[string]string `json:"opaque,omitempty"`
 	Cause       *Error            `json:"cause,omitempty"`
 }
 
@@ -161,7 +162,10 @@ func (async *AsyncResponse) QueryRealResponse(i interface{}, timeout time.Durati
 }
 
 func (async *AsyncResponse) QueryLocation() (*http.Response, error) {
-	request, err := http.NewRequest(http.MethodGet, async.Location, nil)
+	url := url.Parse(async.Location)
+	path := url.Path
+	newURL := async.client.serverEndpoint + path
+	request, err := http.NewRequest(http.MethodGet, newURL, nil)
 	if err != nil {
 		return nil, err
 	}
